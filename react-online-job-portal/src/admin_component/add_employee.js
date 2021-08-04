@@ -1,0 +1,102 @@
+import React from 'react';
+import Back from '../back';
+import { useState, useEffect } from 'react';
+
+const Add_employee = () => {
+    //const [return_result, setReturn] = useState([]);
+    const [employee, setEmployee] = useState({
+        'employee_name': '',
+        'company_name': '',
+        'contact': '',
+        'user_name': '',
+        'password': '',
+    });
+
+    const onchange = (e) => {
+
+        const value = e.target.value;
+        const name = e.target.name;
+
+        setEmployee((prev) => {
+            return {
+                ...prev,
+                [name]: value,
+            }
+        })
+
+
+
+
+    }
+    // const [result, setResult] = useState([]);
+    // const onSubmit = useEffect(async (e) => {
+    //     e.preventDefault();
+    //     let result = await fetch("http://127.0.0.1:8000/api/addEmployee", {
+    //         method: 'POST',
+    //         body: JSON.stringify(employee),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         }
+    //     })
+    //     result = await result.json();
+    //     setReturn(result);
+    // }, []);
+    // console.log(return_result);
+
+    const onSubmit = async (e) => {
+        //console.warn(employee);
+        e.preventDefault();
+        let result = await fetch("http://127.0.0.1:8000/api/addEmployee", {
+            method: 'POST',
+            body: JSON.stringify(employee),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        })
+        console.log(await result.json());
+    }
+
+    return (
+        <div>
+
+            <form onSubmit={onSubmit} >
+
+                <table>
+                    <tr>
+                        <td>Employee Name</td>
+                        <td><input onChange={onchange} name='employee_name' type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Company Name</td>
+                        <td><input onChange={onchange} name='company_name' type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td><input onChange={onchange} name='contact' type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>User Name</td>
+                        <td><input onChange={onchange} name='user_name' type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input onChange={onchange} name='password' type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input name='submit' type="submit" value="Add" /> |
+                            <Back />
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+
+        </div>
+    );
+};
+
+export default Add_employee;
