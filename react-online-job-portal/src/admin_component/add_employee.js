@@ -1,9 +1,11 @@
 import React from 'react';
 import Back from '../back';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 const Add_employee = () => {
     //const [return_result, setReturn] = useState([]);
+    const history = useHistory();
     const [employee, setEmployee] = useState({
         'employee_name': '',
         'company_name': '',
@@ -55,7 +57,7 @@ const Add_employee = () => {
                 "Accept": "application/json"
             }
         })
-        console.log(await result.json());
+        history.push('/');
     }
 
     return (
