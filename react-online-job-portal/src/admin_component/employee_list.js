@@ -1,11 +1,10 @@
-
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import Back from '../back';
+import List from './list';
 
 const Employee_list = ({ data }) => {
 
-
-
-    console.log(data);
     return (
         <div>
 
@@ -20,17 +19,10 @@ const Employee_list = ({ data }) => {
                     <td>Delete</td>
                 </tr>
                 {
-                    data.map((item) =>
-                        <tr>
-                            <td> {item.id} </td>
-                            <td> {item.Employee_Name} </td>
-                            <td> {item.Company_Name} </td>
-                            <td> {item.Contact} </td>
-                            <td>  <a href="http://">Edit</a> </td>
-                            <td> <a href="http://">Delete</a>  </td>
-                        </tr>
 
-                    )
+                    data.map((user) => {
+                        return <List key={user.id} {...user} />
+                    })
                 }
             </table>
         </div>

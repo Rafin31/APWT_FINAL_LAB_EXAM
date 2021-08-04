@@ -7,11 +7,8 @@ import Employee_list from './admin_component/employee_list';
 import Job_list from './employee_component/job_list';
 import Employee_Dashbord from './employee_component/employee_dashboard';
 import Add_job from './employee_component/add_job';
-
-import { useState } from 'react';
-
 import { useFetch } from './admin_component/fetchData';
-
+import { useState } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function App() {
@@ -19,7 +16,6 @@ function App() {
   const [employee_data, setEmployee_data] = useState();
   const employeelist = 'http://127.0.0.1:8000/api/employeeList';
   useFetch(employeelist, setEmployee_data);
-  //console.log(employee_data);
 
 
   return (

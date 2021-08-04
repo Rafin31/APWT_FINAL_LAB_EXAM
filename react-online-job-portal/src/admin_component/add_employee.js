@@ -3,6 +3,7 @@ import Back from '../back';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
+
 const Add_employee = () => {
     //const [return_result, setReturn] = useState([]);
     const history = useHistory();
@@ -30,21 +31,6 @@ const Add_employee = () => {
 
 
     }
-    // const [result, setResult] = useState([]);
-    // const onSubmit = useEffect(async (e) => {
-    //     e.preventDefault();
-    //     let result = await fetch("http://127.0.0.1:8000/api/addEmployee", {
-    //         method: 'POST',
-    //         body: JSON.stringify(employee),
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Accept": "application/json"
-    //         }
-    //     })
-    //     result = await result.json();
-    //     setReturn(result);
-    // }, []);
-    // console.log(return_result);
 
     const onSubmit = async (e) => {
         //console.warn(employee);
@@ -57,7 +43,10 @@ const Add_employee = () => {
                 "Accept": "application/json"
             }
         })
-        history.push('/');
+        //window.open("/Admin");
+        //history.push('/');
+        window.location = '/employee_list';
+
     }
 
     return (
